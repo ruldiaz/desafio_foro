@@ -44,7 +44,7 @@ http://localhost:8080/swagger-ui.html
 
 
 ### **Clonar el proyecto**
-```bash
+
 git clone https://github.com/tu-usuario/desafio-foro-alura.git
 cd desafio-foro-alura
 
