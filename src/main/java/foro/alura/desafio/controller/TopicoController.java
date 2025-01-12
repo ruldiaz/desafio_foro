@@ -7,6 +7,7 @@ import foro.alura.desafio.domain.topico.DatosRespuestaTopico;
 import foro.alura.desafio.domain.topico.Topico;
 import foro.alura.desafio.domain.topico.TopicoRepository;
 import foro.alura.desafio.domain.usuarios.DatosRespuestaUsuario;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/topicos")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     @Autowired

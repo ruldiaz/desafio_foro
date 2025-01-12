@@ -22,18 +22,18 @@ public class SecurityConfigurations {
     private SecurityFilter securityFilter;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return httpSecurity.csrf().disable().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Le indiamos a Spring el tipo de sesion
-                .and().authorizeRequests()
-                .requestMatchers(HttpMethod.POST, "/login")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable()) // Deshabilita protección CSRF
+            .sessionManagement(session -> session
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Especifica administración de sesión stateless
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(HttpMethod.POST, "/login").permitAll() // Permite peticiones POST a /login
+                    .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
+                .anyRequest().authenticated()) // Requiere autenticación para cualquier otra solicitud
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class); // Agrega filtro personalizado antes de UsernamePasswordAuthenticationFilter
+        return http.build(); // Construye y devuelve la cadena de seguridad
     }
+
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
