@@ -52,8 +52,6 @@ Configuración de la base de datos
 
 Crea una base de datos en MySQL:
 CREATE DATABASE forohub;
-
-Crea las tablas en la base de datos:
  
 Configura las credenciales de acceso en el archivo application.properties o application.yml:
 properties
