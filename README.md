@@ -49,14 +49,15 @@ git clone https://github.com/tu-usuario/desafio-foro-alura.git
 cd desafio-foro-alura
 
 Configuración de la base de datos
+
 Crea una base de datos en MySQL:
-sql
-Copiar código
 CREATE DATABASE forohub;
 
+Crea las tablas en la base de datos:
+ 
 Configura las credenciales de acceso en el archivo application.properties o application.yml:
 properties
-Copiar código
+
 spring.datasource.url=jdbc:mysql://localhost/forohub
 spring.datasource.username=tu_usuario
 spring.datasource.password=tu_contrasena
@@ -111,5 +112,7 @@ El proyecto utiliza las siguientes tablas para modelar los datos:
 
 ---
 
+Es necesario crear un usuario y contraseña en la tabla de usuarios para poder generar el JWT y poder autenticarse para hacer peticiones.
 
+```bash
 
