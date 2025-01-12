@@ -112,5 +112,5 @@ El proyecto utiliza las siguientes tablas para modelar los datos:
 
 Es necesario crear un usuario y contraseña en la tabla de usuarios para poder generar el JWT y poder autenticarse para hacer peticiones.
 
-```bash
+
 
